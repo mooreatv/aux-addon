@@ -70,7 +70,7 @@ function M.new(parent, on_click, selected)
 	_G[scroll_bar:GetName() .. 'ScrollUpButton']:Hide()
 	_G[scroll_bar:GetName() .. 'ScrollDownButton']:Hide()
 
-	local rows = T.acquire()
+	local rows = {}
 	local row_index = 1
 	local max_height = content_frame:GetHeight()
 	local total_height = 0

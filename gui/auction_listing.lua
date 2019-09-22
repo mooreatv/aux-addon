@@ -693,15 +693,6 @@ local methods = {
     end,
 
     UpdateRowInfo = function(self)
-	    for _, v in ipairs(self.rowInfo) do
-		    if type(v) == 'table' then
-			    for _, child in pairs(v.children) do
-				    T.release(child)
-			    end
-			    T.release(v.children)
-			    T.release(v)
-		    end
-	    end
         T.wipe(self.rowInfo)
         self.rowInfo.numDisplayRows = 0
         self.isSorted = nil
@@ -727,7 +718,7 @@ local methods = {
                 end
             else
                 -- it's a different base item from the previous row
-                tinsert(self.rowInfo, T.map('item_key', record.item_key, 'expandKey', record.item_key, 'children', T.list(T.map('count', 1, 'record', record))))
+                tinsert(self.rowInfo, T.map('item_key', record.item_key, 'expandKey', record.item_key, 'children', {T.map('count', 1, 'record', record)}))
                 self.rowInfo.numDisplayRows = self.rowInfo.numDisplayRows + 1
             end
         end

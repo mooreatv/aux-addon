@@ -7,7 +7,7 @@ local scan = require 'aux.core.scan'
 
 local tab = aux.tab 'Auctions'
 
-auction_records = T.acquire()
+auction_records = {}
 
 function aux.handle.LOAD()
     aux.event_listener('AUCTION_OWNED_LIST_UPDATE', function()
